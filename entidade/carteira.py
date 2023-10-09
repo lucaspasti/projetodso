@@ -10,4 +10,5 @@ class Carteira:
     def dinheiro(self, dinheiro):
         self.__dinheiro = dinheiro
 
-    # adicionar dinheiro?
+    def somar_dinheiro(self, valor):
+        self.__dinheiro += valor

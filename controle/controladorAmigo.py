@@ -1,3 +1,7 @@
+from amigo import Amigo
+from telaAmigo import TelaAmigo
+
+
 class ControladorAmigo:
     def _init_(self, controlador_sistema):
         self.__amigos = []
@@ -39,10 +43,17 @@ class ControladorAmigo:
         cpf_amigo = self.__tela_amigo.seleciona()   #add parametros
         amigo = self.pega_amigo(cpf_amigo)      # verificar
 
-        amigo.carteira.abre_tela()
+        self.__controlador_carteira.abre_tela(amigo)
 
-    #abre tela
+    def retorna(self):
+        self.__controlador_sistema.abre_tela
 
-    #retornar
+
+    def abre_tela(self):
+        lista_opcoes = {1: self.inclui_amigo, 2: self.altera_amigo, 3: self.excluir_amigo, \
+                        4: self.lista_amigos, 0: self.retorna}
+
+        while True:
+            lista_opcoes[self.__tela_amigo.opcoes()]()
 
     # verificar divida
