@@ -39,7 +39,7 @@ class ControladorAmigo:
 
         self.__amigos.remove(amigo)     # verificar
 
-    def olhar_carteira(self):
+    def olha_carteira(self):
         cpf_amigo = self.__tela_amigo.seleciona()   #add parametros
         amigo = self.pega_amigo(cpf_amigo)      # verificar
 
@@ -51,7 +51,7 @@ class ControladorAmigo:
 
     def abre_tela(self):
         lista_opcoes = {1: self.inclui_amigo, 2: self.altera_amigo, 3: self.excluir_amigo, \
-                        4: self.lista_amigos, 0: self.retorna}
+                        4: self.lista_amigos,5: self.olha_carteira, 0: self.retorna}
 
         while True:
             lista_opcoes[self.__tela_amigo.opcoes()]()

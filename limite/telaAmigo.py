@@ -8,6 +8,7 @@ class TelaAmigo(TelaAbstrata):
         print("2 - Alterar Amigo")
         print("3 - Excluir Amigo")
         print("4 - Listar Amigos")
+        print("5 - Olhar Carteira")
         print("0 - Retornar")
 
         return int(input("Escolha a opção: "))      # verificar
