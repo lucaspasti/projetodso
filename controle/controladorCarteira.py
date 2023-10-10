@@ -7,7 +7,7 @@ class ControladorCarteira:
         self.__controlador_amigo = controlador_amigo
 
     def paga(self, amigo):
-        valor = self.__tela_carteira.pega_valor()
+        valor = -(self.__tela_carteira.pega_valor())
         amigo.carteira.somar_dinheiro(valor)
 
     def recebe(self, amigo):

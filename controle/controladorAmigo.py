@@ -1,12 +1,13 @@
 from amigo import Amigo
 from telaAmigo import TelaAmigo
-
+from controladorCarteira import ControladorCarteira
 
 class ControladorAmigo:
     def _init_(self, controlador_sistema):
         self.__amigos = []
         self.__tela_amigo = TelaAmigo()
         self.__controlador_sistema = controlador_sistema
+        self.__controlador_carteira = ControladorCarteira(self)
 
     def pega_amigo(self, cpf):
         for a in self.__amigos:
@@ -21,12 +22,12 @@ class ControladorAmigo:
 
     def lista_amigos(self):
         for a in self.__amigos:
-            self.__tela_amigo.mostra()  #add parametros
+            self.__tela_amigo.mostra({'nome': a.nome, 'cpf': a.cpf, 'dinheiro': a.carteira.dinheiro})  #add parametros
 
     def altera_amigo(self):
         self.lista_amigos()
         cpf_amigo = self.__tela_amigo.seleciona()   #add parametros
-        amigo = self.__pega_amigo(cpf_amigo)
+        amigo = self.pega_amigo(cpf_amigo)
 
         novos_dados = self.__tela_amigo.pega_dados()    #add parametros
         amigo.nome = novos_dados['nome']
