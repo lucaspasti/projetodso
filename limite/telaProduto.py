@@ -5,16 +5,34 @@ class TelaProduto (TelaAbstrata):
     def __init__(self):
         super().__init__()
 
-    def tela_opcoes(self):
+    def opcoes(self):
         print("-------- Opções Produto ----------")
         print("Escolha a opcao")
         print("1 - Incluir Produto")
         print("2 - Alterar Produto")
         print("3 - Exclui Produtos")
-        print("4 - Pega Produto por Codigo")
+        print("4 - Mostra Produto por Codigo")
         print("5 - Lista Produtos")
         print("0 - Voltar")
 
-        opcao = self.verifica((0, 1, 2, 3, 4, 5))
-        print("\n"*3)
-        return opcao
+        return int(input("Escolha a opção: "))
+
+    def pega_dados(self):
+        print("-----DADOS-----")
+        nome = input("Nome do produto: ")
+        codigo = int(input("Codigo do produto: "))
+        preco = int(input())           # verificar
+
+        return {'nome': nome, 'codigo': codigo, 'preco': preco}
+
+    def mostra(self, dados):
+        print("Nome: ", dados['nome'])
+        print("Codigo: ", dados['codigo'])
+        print("Preço: ", dados['preco'])
+        print("\n")
+
+    def seleciona(self):
+        return input("Codigo do produto selecionado: ")     # verificar
+
+    def mensagem(self, msg):
+        print(msg)
