@@ -1,5 +1,7 @@
+from entidade.carteira import Carteira
+
 class Amigo:
-    def _init_(self, nome, cpf, dinheiro):
+    def __init__(self, nome, cpf, dinheiro):
         self.__nome = nome
         self.__cpf = cpf
         self.__eventos = []

@@ -2,7 +2,7 @@ from entidade.compra import Compra
 from entidade.amigo import Amigo
 
 class Evento:
-    def _init_(self, nome, data, codigo):
+    def __init__(self, nome, data, codigo):
         self.__nome = nome
         self.__data = data
         self.__codigo = codigo

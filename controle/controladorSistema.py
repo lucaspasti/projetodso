@@ -5,12 +5,11 @@ from controle.controladorAmigo import ControladorAmigo
 
 class ControladorSistema:
     def __init__(self):
-        self.__controlador_evento = ControladorEvento(self)
         self.__controlador_amigo = ControladorAmigo(self)
+        self.__controlador_evento = ControladorEvento(self)
 #       self.__controlador_produto = ControladorProduto(self)
         self.__tela_sistema = TelaSistema()
 
-    @property
     def controlador_amigo(self):
         return self.__controlador_amigo
 
@@ -23,8 +22,8 @@ class ControladorSistema:
     def menu_eventos(self):
         self.__controlador_evento.abre_tela()
 
-#    def menu_produtos(self):
- #       self.__controlador_produto.abre_tela()
+    def menu_produtos(self):
+        self.__controlador_produto.abre_tela()
 
     def encerra_sistema(self):
         exit(0)
@@ -35,6 +34,6 @@ class ControladorSistema:
         while True:
             lista_opcoes[self.__tela_sistema.opcoes()]()
 
-sis = ControladorSistema()
-
-sis.inicializa_sistema()
+if __name__ == "__main__":
+    sis = ControladorSistema()
+    sis.inicializa_sistema()

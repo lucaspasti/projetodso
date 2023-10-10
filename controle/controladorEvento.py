@@ -1,6 +1,5 @@
 from entidade.evento import Evento
 from limite.telaEvento import TelaEvento
-# from controle.controladorAmigo import ControladorAmigo
 from controladorCompra import ControladorCompra
 
 class ControladorEvento:
@@ -8,10 +7,10 @@ class ControladorEvento:
         self.__controlador_sistema = controlador_sistema
         self.__tela_evento = TelaEvento()
         self.__eventos = []
-        self.__controlador_amigo = self.__controlador_sistema.controlador_amigo
+        self.__controlador_amigo = controlador_sistema.controlador_amigo()
         self.__controlador_compra = ControladorCompra(self)
 
-    @property
+
     def controlador_amigo(self):
         return self.__controlador_amigo
 
@@ -61,7 +60,7 @@ class ControladorEvento:
             lista_opcoes[self.__tela_evento.opcoes_um_evento()](evento)
 
     def add_amigo(self, evento):
-        cpf = self.__controlador_amigo.tela_amigo.seleciona()
+        cpf = self.__controlador_amigo.tela_amigo().seleciona()
         amigo = self.__controlador_amigo.pega_amigo(cpf)
         evento.add_amigo(amigo)         # verificar
 

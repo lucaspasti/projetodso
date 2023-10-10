@@ -25,8 +25,8 @@ class ControladorCompra:
     def inclui_compra(self, evento):
         dados = self.__tela_compra.pega_dados()  #add parametros
         compra = Compra(dados['codigo'], evento,
-                        self.__controlador_evento.controlador_amigo.pega_amigo(dados['cpf']))  # verificar
-        self.__compras.append(compra)
+                        self.__controlador_evento.controlador_amigo().pega_amigo(dados['cpf']))  # verificar
+        self.__compras.append(compra)       # Pegar produtos
         return compra
 
     def lista_compras(self, evento):

@@ -3,15 +3,18 @@ from limite.telaAmigo import TelaAmigo
 from controle.controladorCarteira import ControladorCarteira
 
 class ControladorAmigo:
-    def _init_(self, controlador_sistema):
+    def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__amigos = []
         self.__tela_amigo = TelaAmigo()
         self.__controlador_carteira = ControladorCarteira(self)
 
-    @property
+
     def controlador_carteira(self):
         return self.__controlador_carteira
+
+    def tela_amigo(self):
+        return self.__tela_amigo
 
     def pega_amigo(self, cpf):
         for a in self.__amigos:
@@ -51,7 +54,7 @@ class ControladorAmigo:
         self.__controlador_carteira.abre_tela(amigo)
 
     def retorna(self):
-        self.__controlador_sistema.abre_tela
+        self.__controlador_sistema.abre_tela()
 
 
     def abre_tela(self):

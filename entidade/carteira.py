@@ -1,6 +1,6 @@
 class Carteira:
-    def _init_(self, dinheiro):
-        self.__dinheiro = dinheiro
+    def __init__(self, dinheiro):
+        self.__dinheiro = int(dinheiro)
 
     @property
     def dinheiro(self):

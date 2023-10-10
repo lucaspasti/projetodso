@@ -15,10 +15,10 @@ class TelaCompra(TelaAbstrata):
 
     def pega_dados(self):
         print("-----DADOS-----")
-        nome = input("Código: ")
+        codigo = input("Código: ")
         cpf_pagante = input("CPF do amigo pagante: ")          # verificar
 
-        return {'nome': nome, 'cpf': cpf_pagante}
+        return {'codigo': codigo, 'cpf': cpf_pagante}       # Pegar produtos
 
     def mostra(self, dados):
         print("Código: ", dados['codigo'])

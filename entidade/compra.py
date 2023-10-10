@@ -1,5 +1,7 @@
+
+
 class Compra:
-    def _init_(self, codigo, evento, pagante):
+    def __init__(self, codigo, evento, pagante):
         self.__codigo = codigo
         self.__evento = evento  #verificar
         self.__pagante = pagante    #verificar
