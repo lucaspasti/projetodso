@@ -1,11 +1,19 @@
-from evento import Evento
-from telaEvento import TelaEvento
+from entidade.evento import Evento
+from limite.telaEvento import TelaEvento
+# from controle.controladorAmigo import ControladorAmigo
+from controladorCompra import ControladorCompra
 
 class ControladorEvento:
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela_evento = TelaEvento()
         self.__eventos = []
+        self.__controlador_amigo = self.__controlador_sistema.controlador_amigo
+        self.__controlador_compra = ControladorCompra(self)
+
+    @property
+    def controlador_amigo(self):
+        return self.__controlador_amigo
 
     def pega_evento(self, codigo):
         for e in self.__eventos:
@@ -45,24 +53,48 @@ class ControladorEvento:
 
         self.__tela_evento.mostra_um_evento(evento)
 
-        lista_opcoes = {1: self.inclui_evento, 2: self.altera_evento, 3: self.exclui_evento, \
-                        4: self.lista_eventos, 5: self.olha_evento, 0: self.retorna}
+        lista_opcoes = {1: self.add_amigo, 2: self.add_compra, 3: self.remove_amigo,
+                        4: self.remove_compra, 5: self.quita_compra, 6: self.quita_evento,
+                        0: self.abre_tela}
 
         while True:
-            lista_opcoes[self.__tela_evento.opcoes_um_evento()]()
+            lista_opcoes[self.__tela_evento.opcoes_um_evento()](evento)
 
-    # add amigo no evento
+    def add_amigo(self, evento):
+        cpf = self.__controlador_amigo.tela_amigo.seleciona()
+        amigo = self.__controlador_amigo.pega_amigo(cpf)
+        evento.add_amigo(amigo)         # verificar
 
-    # add compra no evento
 
-    # quitar evento
+    def add_compra(self, evento):
+        compra = self.__controlador_compra.inclui_compra(evento)
+        evento.add_compra(compra)
+
+    def remove_amigo(self, evento):
+        cpf = self.__controlador_amigo.tela_amigo.seleciona()
+        evento.exc_amigo(cpf)           # verificar
+
+    def remove_compra(self, evento):
+        compra = self.__controlador_compra.excluir_compra(evento)
+        evento.exc_compra(compra.codigo)
+
+    def quita_compra(self, evento):
+        codigo_compra = self.__controlador_compra.tela_compra.seleciona()
+        compra = self.__controlador_compra.pega_compra(codigo_compra)           # verificar
+
+        self.__controlador_compra.quita_compra(compra)
+
+    def quita_evento(self, evento):
+        for c in self.__controlador_compra.compras:
+            if c.evento == evento:
+                self.__controlador_compra.quita_compra(c)
 
 
     def retorna(self):
         self.__controlador_sistema.abre_tela()
 
-    def abre_tela(self):
-        lista_opcoes = {1: self.inclui_evento, 2: self.altera_evento, 3: self.exclui_evento, \
+    def abre_tela(self, evento=''):     # param opcional para poder retornar do "olha evento"
+        lista_opcoes = {1: self.inclui_evento, 2: self.altera_evento, 3: self.exclui_evento,
                         4: self.lista_eventos,5: self.olha_evento, 0: self.retorna}
 
         while True:

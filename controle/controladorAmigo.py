@@ -1,13 +1,17 @@
-from amigo import Amigo
-from telaAmigo import TelaAmigo
-from controladorCarteira import ControladorCarteira
+from entidade.amigo import Amigo
+from limite.telaAmigo import TelaAmigo
+from controle.controladorCarteira import ControladorCarteira
 
 class ControladorAmigo:
     def _init_(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
         self.__amigos = []
         self.__tela_amigo = TelaAmigo()
-        self.__controlador_sistema = controlador_sistema
         self.__controlador_carteira = ControladorCarteira(self)
+
+    @property
+    def controlador_carteira(self):
+        return self.__controlador_carteira
 
     def pega_amigo(self, cpf):
         for a in self.__amigos:
@@ -17,7 +21,7 @@ class ControladorAmigo:
 
     def inclui_amigo(self):
         dados = self.__tela_amigo.pega_dados()  #add parametros
-        amigo = Amigo(dados['nome'], dados['cpf'])  # verificar
+        amigo = Amigo(dados['nome'], dados['cpf'], dados['dinheiro'])  # verificar
         self.__amigos.append(amigo)
 
     def lista_amigos(self):
@@ -51,7 +55,7 @@ class ControladorAmigo:
 
 
     def abre_tela(self):
-        lista_opcoes = {1: self.inclui_amigo, 2: self.altera_amigo, 3: self.excluir_amigo, \
+        lista_opcoes = {1: self.inclui_amigo, 2: self.altera_amigo, 3: self.excluir_amigo,
                         4: self.lista_amigos,5: self.olha_carteira, 0: self.retorna}
 
         while True:

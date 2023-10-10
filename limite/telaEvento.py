@@ -47,3 +47,5 @@ class TelaEvento(TelaAbstrata):
         print("4 - Remover Compra")
         print("5 - Quitar Evento")
         print("0 - Retornar")
+
+        return int(input("Escolha a opção: "))  # verificar

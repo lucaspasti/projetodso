@@ -1,5 +1,5 @@
 class Compra:
-    def _init_(self, codigo, evento: Evento, pagante: Amigo):
+    def _init_(self, codigo, evento, pagante):
         self.__codigo = codigo
         self.__evento = evento  #verificar
         self.__pagante = pagante    #verificar
@@ -49,3 +49,9 @@ class Compra:
         for p in self.__produtos:
             if p.codigo == codigo:
                 self.__produtos.remove(p)   # verificar
+
+    def valor_total(self):
+        valor = 0
+        for p in self.__produtos:
+            valor += p.preco
+        return valor

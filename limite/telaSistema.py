@@ -1,6 +1,6 @@
 from limite.telaAbstrata import TelaAbstrata
 
-class TelaAmigo(TelaAbstrata):
+class TelaSistema(TelaAbstrata):
 
     def opcoes(self):
         print("-----OPÇÕES-----")

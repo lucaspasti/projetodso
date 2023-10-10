@@ -1,4 +1,6 @@
-class TelaCarteira:
+from limite.telaAbstrata import TelaAbstrata
+
+class TelaCarteira(TelaAbstrata):
 
     def opcoes(self, amigo):
         print(f"-----Carteira De {amigo.nome}-----")

@@ -1,4 +1,5 @@
-from telaCarteira import TelaCarteira
+from limite.telaCarteira import TelaCarteira
+from entidade.carteira import Carteira
 
 class ControladorCarteira:
 
@@ -12,6 +13,9 @@ class ControladorCarteira:
 
     def recebe(self, amigo):
         valor = self.__tela_carteira.pega_valor()
+        amigo.carteira.somar_dinheiro(valor)
+
+    def recebe_valor(self, amigo, valor):
         amigo.carteira.somar_dinheiro(valor)
 
     def retorna(self, _):

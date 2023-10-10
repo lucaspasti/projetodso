@@ -1,3 +1,6 @@
+from entidade.compra import Compra
+from entidade.amigo import Amigo
+
 class Evento:
     def _init_(self, nome, data, codigo):
         self.__nome = nome
@@ -19,7 +22,7 @@ class Evento:
         return self.__data
 
     @data.setter
-    def data(self, nome):
+    def data(self, data):
         self.__data = data
 
     @property
