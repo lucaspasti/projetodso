@@ -2,8 +2,7 @@ from limite.telaAbstrata import TelaAbstrata
 
 
 class TelaProduto (TelaAbstrata):
-    def __init__(self):
-        super().__init__()
+
 
     def opcoes(self):
         print("-------- Opções Produto ----------")
@@ -21,7 +20,7 @@ class TelaProduto (TelaAbstrata):
         print("-----DADOS-----")
         nome = input("Nome do produto: ")
         codigo = int(input("Codigo do produto: "))
-        preco = int(input())           # verificar
+        preco = int(input('Preço do produto: '))           # verificar
 
         return {'nome': nome, 'codigo': codigo, 'preco': preco}
 
@@ -32,7 +31,7 @@ class TelaProduto (TelaAbstrata):
         print("\n")
 
     def seleciona(self):
-        return input("Codigo do produto selecionado: ")     # verificar
+        return int(input("Codigo do produto selecionado: "))    # verificar
 
     def mensagem(self, msg):
         print(msg)

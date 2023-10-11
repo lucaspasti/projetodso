@@ -1,18 +1,12 @@
 from entidade.evento import Evento
 from limite.telaEvento import TelaEvento
-from controladorCompra import ControladorCompra
 
 class ControladorEvento:
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela_evento = TelaEvento()
         self.__eventos = []
-        self.__controlador_amigo = controlador_sistema.controlador_amigo()
-        self.__controlador_compra = ControladorCompra(self)
 
-
-    def controlador_amigo(self):
-        return self.__controlador_amigo
 
     def pega_evento(self, codigo):
         for e in self.__eventos:
@@ -60,33 +54,33 @@ class ControladorEvento:
             lista_opcoes[self.__tela_evento.opcoes_um_evento()](evento)
 
     def add_amigo(self, evento):
-        cpf = self.__controlador_amigo.tela_amigo().seleciona()
-        amigo = self.__controlador_amigo.pega_amigo(cpf)
+        cpf = self.__controlador_sistema.controlador_amigo.tela_amigo().seleciona()
+        amigo = self.__controlador_sistema.controlador_amigo.pega_amigo(cpf)
         evento.add_amigo(amigo)         # verificar
 
 
     def add_compra(self, evento):
-        compra = self.__controlador_compra.inclui_compra(evento)
+        compra = self.__controlador_sistema.controlador_compra.inclui_compra(evento)
         evento.add_compra(compra)
 
     def remove_amigo(self, evento):
-        cpf = self.__controlador_amigo.tela_amigo.seleciona()
+        cpf = self.__controlador_sistema.controlador_amigo.tela_amigo.seleciona()
         evento.exc_amigo(cpf)           # verificar
 
     def remove_compra(self, evento):
-        compra = self.__controlador_compra.excluir_compra(evento)
+        compra = self.__controlador_sistema.controlador_compra.exclui_compra(evento)
         evento.exc_compra(compra.codigo)
 
     def quita_compra(self, evento):
-        codigo_compra = self.__controlador_compra.tela_compra.seleciona()
-        compra = self.__controlador_compra.pega_compra(codigo_compra)           # verificar
+        codigo_compra = self.__controlador_sistema.controlador_compra.tela_compra.seleciona()
+        compra = self.__controlador_sistema.controlador_compra.pega_compra(codigo_compra)           # verificar
 
-        self.__controlador_compra.quita_compra(compra)
+        self.__controlador_sistema.controlador_compra.quita_compra(compra)
 
     def quita_evento(self, evento):
-        for c in self.__controlador_compra.compras:
+        for c in self.__controlador_sistema.controlador_compra.compras:
             if c.evento == evento:
-                self.__controlador_compra.quita_compra(c)
+                self.__controlador_sistema.controlador_compra.quita_compra(c)
 
 
     def retorna(self):

@@ -3,10 +3,14 @@ from limite.telaProduto import TelaProduto
 
 class ControladorProduto:
 
-    def __int__(self, controlador_sistema):
+    def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__produtos = []
         self.__tela_produto = TelaProduto()
+
+    @property
+    def tela_produto(self):
+        return self.__tela_produto
 
     def pega_produto(self, codigo):
         for p in self.__produtos:
@@ -43,11 +47,11 @@ class ControladorProduto:
         self.__tela_produto.mostra()
 
     def retorna(self):
-        self.__controlador_sistema.abre_tela
+        self.__controlador_sistema.abre_tela()
 
     def abre_tela(self):
-        lista_opcoes = {1: self.inclui_produto(), 2: self.altera_produto(), 3: self.excluir_produto(),
-                        4: self.mostra_produto(),5: self.lista_produtos, 0: self.retorna}
+        lista_opcoes = {1: self.inclui_produto, 2: self.altera_produto, 3: self.excluir_produto,
+                        4: self.mostra_produto,5: self.lista_produtos, 0: self.retorna}
 
         while True:
-            lista_opcoes[self.__tela_amigo.opcoes()]()
+            lista_opcoes[self.__tela_produto.opcoes()]()

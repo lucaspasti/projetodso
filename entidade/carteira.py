@@ -1,6 +1,6 @@
 class Carteira:
     def __init__(self, dinheiro):
-        self.__dinheiro = int(dinheiro)
+        self.__dinheiro = float(dinheiro)
 
     @property
     def dinheiro(self):
