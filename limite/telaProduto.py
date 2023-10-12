@@ -10,9 +10,8 @@ class TelaProduto (TelaAbstrata):
         print("1 - Incluir Produto")
         print("2 - Alterar Produto")
         print("3 - Exclui Produtos")
-        print("4 - Mostra Produto por Codigo")
-        print("5 - Lista Produtos")
-        print("0 - Voltar")
+        print("4 - Lista Produtos")
+        print("0 - Retornar")
 
         return int(input("Escolha a opção: "))
 

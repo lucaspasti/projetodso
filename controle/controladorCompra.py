@@ -51,9 +51,10 @@ class ControladorCompra:
         self.__compras.remove(compra)
         return compra
 
+
     def quita_compra(self, compra):
 
-        valor_parcial = compra.valor_total() / len(compra.evento.amigos)
+        valor_parcial = compra.valor_parcial()
         for a in compra.evento.amigos:
             self.__controlador_sistema.controlador_carteira.recebe_valor(
                 a, -(valor_parcial)

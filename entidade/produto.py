@@ -1,7 +1,7 @@
 class Produto:
     def __init__(self, nome, codigo, preco):
         self.__nome = nome
-        self.__preco = preco
+        self.__preco = float(preco)
         self.__codigo = codigo
 
     @property

@@ -57,3 +57,7 @@ class Compra:
         for p in self.__produtos:
             valor += p.preco
         return valor
+
+    def valor_parcial(self):
+        valor = self.valor_total() / len(self.__evento.amigos)
+        return valor

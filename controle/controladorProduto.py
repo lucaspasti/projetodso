@@ -43,15 +43,13 @@ class ControladorProduto:
 
         self.__produtos.remove(produto)  # verificar
 
-    def mostra_produto(self):
-        self.__tela_produto.mostra()
 
     def retorna(self):
         self.__controlador_sistema.abre_tela()
 
     def abre_tela(self):
         lista_opcoes = {1: self.inclui_produto, 2: self.altera_produto, 3: self.excluir_produto,
-                        4: self.mostra_produto,5: self.lista_produtos, 0: self.retorna}
+                        4: self.lista_produtos, 0: self.retorna}
 
         while True:
             lista_opcoes[self.__tela_produto.opcoes()]()
