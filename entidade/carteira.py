@@ -11,4 +11,4 @@ class Carteira:
         self.__dinheiro = dinheiro
 
     def somar_dinheiro(self, valor):
-        self.__dinheiro += valor
+        self.__dinheiro += float(valor)

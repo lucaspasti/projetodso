@@ -2,6 +2,7 @@
 class TelaCarteira():
 
     def opcoes(self, amigo):
+        print("\n")
         print(f"-----Carteira De {amigo.nome}-----")
         print(f"Dinheiro: {amigo.carteira.dinheiro}")
         print("1 - Pagar")
@@ -11,7 +12,7 @@ class TelaCarteira():
         return int(input("Escolha uma opção: "))
 
     def pega_valor(self):
-        return int(input("Digite o valor: "))
+        return float(input("Digite o valor: "))
 
     def pega_cpf_credor(self):
         return input("CPF do credor (Para verificar dívida total, deixe vazio): ")

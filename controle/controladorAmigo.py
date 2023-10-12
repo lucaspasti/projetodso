@@ -7,6 +7,7 @@ class ControladorAmigo:
         self.__amigos = []
         self.__tela_amigo = TelaAmigo()
 
+    @property
     def tela_amigo(self):
         return self.__tela_amigo
 
@@ -33,6 +34,7 @@ class ControladorAmigo:
         novos_dados = self.__tela_amigo.pega_dados()    #add parametros
         amigo.nome = novos_dados['nome']
         amigo.cpf = novos_dados['cpf']      # verificar
+        amigo.carteira.dinheiro = novos_dados['dinheiro']
 
     def excluir_amigo(self):
         self.lista_amigos()
@@ -42,6 +44,7 @@ class ControladorAmigo:
         self.__amigos.remove(amigo)     # verificar
 
     def olha_carteira(self):
+        self.lista_amigos()
         cpf_amigo = self.__tela_amigo.seleciona()   #add parametros
         amigo = self.pega_amigo(cpf_amigo)      # verificar
 

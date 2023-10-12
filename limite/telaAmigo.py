@@ -18,10 +18,12 @@ class TelaAmigo(TelaAbstrata):
         nome = input("Nome: ")
         cpf = input("CPF: ")
         dinheiro = input("Dinheiro: ")          # verificar
+        print("\n")
 
         return {'nome': nome, 'cpf': cpf, 'dinheiro': dinheiro}
 
     def mostra(self, dados):
+        print("\n")
         print("Nome: ", dados['nome'])
         print("CPF: ", dados['cpf'])
         print("Dinheiro: ", dados['dinheiro'])

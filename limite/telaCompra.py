@@ -23,6 +23,8 @@ class TelaCompra(TelaAbstrata):
     def mostra(self, dados):
         print("Código: ", dados['codigo'])
         print("Pagante: ", dados['pagante'])
+        print("Produtos: ", dados['produtos'])
+        print("Valor: ", dados['valor'])
         print("Quitada: ", dados['quitada'])
         print("\n")
 

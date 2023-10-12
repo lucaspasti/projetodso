@@ -5,6 +5,7 @@ class TelaProduto (TelaAbstrata):
 
 
     def opcoes(self):
+        print("\n")
         print("-------- Opções Produto ----------")
         print("Escolha a opcao")
         print("1 - Incluir Produto")
@@ -24,6 +25,7 @@ class TelaProduto (TelaAbstrata):
         return {'nome': nome, 'codigo': codigo, 'preco': preco}
 
     def mostra(self, dados):
+        print("\n")
         print("Nome: ", dados['nome'])
         print("Codigo: ", dados['codigo'])
         print("Preço: ", dados['preco'])

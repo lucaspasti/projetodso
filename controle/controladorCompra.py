@@ -27,24 +27,28 @@ class ControladorCompra:
         compra = Compra(dados['codigo'], evento,
                         self.__controlador_sistema.controlador_amigo.pega_amigo(dados['cpf']))  # verificar
         while True:
+            self.__controlador_sistema.controlador_produto.lista_produtos()
             codigo_produto = self.__controlador_sistema.controlador_produto.tela_produto.seleciona()
             if codigo_produto == 0:
                 break
+            self.__controlador_sistema.controlador_produto.tela_produto.mensagem("Digite '0' para finalizar")
             compra.add_produto(self.__controlador_sistema.controlador_produto.pega_produto(codigo_produto))
 
         self.__controlador_sistema.controlador_carteira.recebe_valor(compra.pagante, -compra.valor_total())
         self.__compras.append(compra)       # Pegar produtos
         return compra
 
-    def lista_compras(self, evento):
+    def lista_compras_evento(self, evento):
         for c in self.__compras:
             if c.evento == evento:
-                self.__tela_compra.mostra({'codigo': c.nome, 'pagante': c.pagante,
+                self.__tela_compra.mostra({'codigo': c.codigo, 'pagante': c.pagante,
+                                           'produtos': [produto.nome for produto in c.produtos],
+                                           'valor': c.valor_total(),
                                            'quitada': c.quitada})  #add parametros
 
 
     def exclui_compra(self, evento):
-        self.lista_compras(evento)
+        self.lista_compras_evento(evento)
         codigo_compra = self.__tela_compra.seleciona()   #add parametros
         compra = self.pega_compra(codigo_compra)
 
@@ -53,14 +57,14 @@ class ControladorCompra:
 
 
     def quita_compra(self, compra):
+        if compra.quitada == False:
+            valor_parcial = compra.valor_parcial()
+            for a in compra.evento.amigos:
+                self.__controlador_sistema.controlador_carteira.recebe_valor(
+                    a, -(valor_parcial)
+                )
 
-        valor_parcial = compra.valor_parcial()
-        for a in compra.evento.amigos:
             self.__controlador_sistema.controlador_carteira.recebe_valor(
-                a, -(valor_parcial)
+                compra.pagante, compra.valor_total()
             )
-
-        self.__controlador_sistema.controlador_carteira.recebe_valor(
-            compra.pagante, compra.valor_total()
-        )
-        compra.quitada = True
+            compra.quitada = True

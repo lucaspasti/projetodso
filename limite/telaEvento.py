@@ -3,6 +3,7 @@ from limite.telaAbstrata import TelaAbstrata
 class TelaEvento(TelaAbstrata):
 
     def opcoes(self):
+        print("\n")
         print("-----EVENTOS-----")
         print("1 - Incluir Evento")
         print("2 - Alterar Evento")
@@ -22,6 +23,7 @@ class TelaEvento(TelaAbstrata):
         return {'nome': nome, 'data': data, 'codigo': codigo}
 
     def mostra(self, dados):
+        print("\n")
         print("Nome: ", dados['nome'])
         print("Data: ", dados['data'])
         print("Código: ", dados['codigo'])
@@ -34,10 +36,12 @@ class TelaEvento(TelaAbstrata):
         print(msg)
 
     def mostra_um_evento(self, evento):
+        print("\n")
         print("Nome: ", evento.nome)
         print("Data: ", evento.data)
-        print("Amigos no Evento: ", evento.amigos)
-        print("Compras no Evento: ", evento.compras)        # listar mostrando as infos
+
+        print("Amigos no Evento: ", [amigo.nome for amigo in evento.amigos])
+        print("Compras no Evento: ", [f"Compra código {compra.codigo}" for compra in evento.compras])
 
     def opcoes_um_evento(self):
         print("-----OPÇÕES-----")
