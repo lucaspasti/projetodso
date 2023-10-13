@@ -12,10 +12,15 @@ class ControladorAmigo:
         return self.__tela_amigo
 
     def pega_amigo(self, cpf):
-        for a in self.__amigos:
-            if a.cpf == cpf:
-                return a
-        return None
+        try:
+            for a in range(len(self.__amigos)):
+                if self.__amigos[a].amigo.cpf == cpf:
+                    return a
+            else:
+                raise KeyError
+        except KeyError:
+            return None
+
 
     def inclui_amigo(self):
         dados = self.__tela_amigo.pega_dados()  #add parametros

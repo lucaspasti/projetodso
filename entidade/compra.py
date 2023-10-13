@@ -1,7 +1,5 @@
-
-
 class Compra:
-    def __init__(self, codigo, evento, pagante):
+    def _init_(self, codigo, evento, pagante):
         self.__codigo = codigo
         self.__evento = evento  #verificar
         self.__pagante = pagante    #verificar
@@ -56,8 +54,4 @@ class Compra:
         valor = 0
         for p in self.__produtos:
             valor += p.preco
-        return valor
-
-    def valor_parcial(self):
-        valor = self.valor_total() / len(self.__evento.amigos)
         return valor
