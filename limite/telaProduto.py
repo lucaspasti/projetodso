@@ -3,18 +3,28 @@ from limite.telaAbstrata import TelaAbstrata
 
 class TelaProduto (TelaAbstrata):
 
+    def le_num_inteiro(self, msg='', inteiros_validos=[]):
+        while True:
+            entrada = input(msg)
+            try:
+                inteiro = int(entrada)
+                if inteiros_validos and inteiro not in inteiros_validos:
+                    raise ValueError
+                return inteiro
+            except ValueError:
+                print("Valor inválido")
+                print()
 
     def opcoes(self):
         print("\n")
         print("-------- Opções Produto ----------")
-        print("Escolha a opcao")
         print("1 - Incluir Produto")
         print("2 - Alterar Produto")
         print("3 - Exclui Produtos")
         print("4 - Lista Produtos")
         print("0 - Retornar")
 
-        return int(input("Escolha a opção: "))
+        return self.le_num_inteiro("Escolha a opção: ", [1, 2, 3, 4, 0])
 
     def pega_dados(self):
         print("-----DADOS-----")

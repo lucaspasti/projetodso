@@ -1,6 +1,18 @@
 
 class TelaCarteira():
 
+    def le_num_inteiro(self, msg='', inteiros_validos=[]):
+        while True:
+            entrada = input(msg)
+            try:
+                inteiro = int(entrada)
+                if inteiros_validos and inteiro not in inteiros_validos:
+                    raise ValueError
+                return inteiro
+            except ValueError:
+                print("Valor inválido")
+                print()
+
     def opcoes(self, amigo):
         print("\n")
         print(f"-----Carteira De {amigo.nome}-----")
@@ -9,7 +21,7 @@ class TelaCarteira():
         print("2 - Receber")
         print("3 - Verificar dívidas")
         print("0 - Retornar")
-        return int(input("Escolha uma opção: "))
+        return self.le_num_inteiro("Escolha a opção: ", [1, 2, 3, 0])
 
     def pega_valor(self):
         return float(input("Digite o valor: "))
