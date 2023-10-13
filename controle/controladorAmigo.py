@@ -23,9 +23,24 @@ class ControladorAmigo:
 
 
     def inclui_amigo(self):
-        dados = self.__tela_amigo.pega_dados()  #add parametros
-        amigo = Amigo(dados['nome'], dados['cpf'], dados['dinheiro'])  # verificar
-        self.__amigos.append(amigo)
+        while True:
+            dados = self.__tela_amigo.pega_dados()
+            amigo = Amigo(dados['nome'], dados['cpf'], dados['dinheiro'])
+            try:
+                for a in self.__amigos:
+                    if a.cpf == amigo.cpf:
+                        raise ValueError
+            except ValueError:
+                self.__tela_amigo.mensagem("CPF já existente, tente novamente.")
+            try:
+                if amigo.cpf < 0:
+                    raise ValueError
+            except ValueError:
+                self.__tela_amigo.mensagem("CPF inválido, tente novamente.")
+
+            else:
+                self.__amigos.append(amigo)
+                break
 
     def lista_amigos(self):
         for a in self.__amigos:
